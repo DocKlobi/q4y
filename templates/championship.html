@@ -1,0 +1,124 @@
+
+
+<style>
+    
+    .item > p, .item_override {
+        white-space: normal;
+    }
+        
+    .item-avatar > h2 {
+        font-size: 12px;
+    }
+        
+    .item-avatar > p {
+        font-size: 10px;
+        line-height:13px;
+    }
+        
+    .item-avatar {
+        padding-left: 40px;
+        padding-top: 5px;
+        /*border-left: 0px;
+        left: 0px;
+        margin-left: 0px;
+        */
+    }
+        
+    .item-avatar > img:first-child {
+        top: 5px;
+        left: 0px;
+    }
+    
+    .bullshit {
+        background-color: #FFBDAD;
+    }
+    
+    .goodanswer {
+        background-color: #33CC33;
+    }
+
+</style>
+
+<ion-view title="Championship">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+    <ion-footer-bar ng-if="currQuiz.done" align-title="left" class="bar-stable">
+        <!--div class="buttons">
+            <button class="button">previous</button>
+        </div-->
+        <h1 class="title">{{currQuiz.answerResultText}}</h1>
+        <div class="buttons" ng-click="setNextQuiz()">
+            <button class="button button-assertive">next</button>
+        </div>
+    </ion-footer-bar>
+
+  <ion-content class="has-header">
+
+    <ion-list>
+        <div class="row">
+            <div class="col">
+                <div class="item item-avatar" href="#">
+                    <img src="{{currPlayer.avatar}}">
+                    <h2>{{currPlayer.username}}</h2>
+                    <p>
+                        HighScore: {{currPlayer.highscore}}<br>
+                        TimeToAnswer: {{currPlayer.timetoanswer}}<br>
+                        CorrectAnswers: {{currPlayer.correctanswers}}<br>
+                        Wins: {{currPlayer.wins}}
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item item-avatar" href="#">
+                    <img src="{{compPlayer.avatar}}">
+                    <h2>{{compPlayer.username}}</h2>
+                    <p>
+                        HighScore: {{compPlayer.highscore}}<br>
+                        TimeToAnswer: {{compPlayer.timetoanswer}}<br>
+                        CorrectAnswers: {{compPlayer.correctanswers}}<br>
+                        Wins: {{compPlayer.wins}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="list list-inset">
+
+            <div class="item item-divider">
+                Frage
+            </div>
+
+            <div class="item">
+                <p class="item_override">
+                    {{ currQuiz.question }}
+                </p>
+            </div>
+
+            <div class="item item-divider">
+                Antworten
+            </div>
+
+            <div  ng-repeat="what in currQuiz.answers"
+                class="item {{what.class}}"
+                ng-click="setUserAnswer($index)"
+            >
+                    {{$index + 1}}.) {{what.answer}}
+            </div>
+            
+        </div>
+    </ion-list>
+    
+    <!--div class="row">
+        <div class="col">
+            <a class="button icon-left ion-chevron-left button-positive button-small button-dark">previous question</a>
+        </div>
+        <div class="col">
+            <a class="button icon-right ion-chevron-right button-positive button-small button-dark">next question</a>
+        </div>
+    </div-->
+  </ion-content>
+
+</ion-view>

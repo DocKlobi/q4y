@@ -1,0 +1,62 @@
+
+
+    <style>
+    
+        .item_override {
+            white-space: normal;
+        }
+        
+    .item-avatar > h2 {
+        font-size: 70%;
+    }
+        
+    .item-avatar > p {
+        font-size: 10px;
+        line-height:13px;
+    }
+        
+    .item-avatar {
+        padding-left: 40px;
+        padding-top: 5px;
+        /*border-left: 0px;
+        left: 0px;
+        margin-left: 0px;
+        */
+    }
+        
+    .item-avatar > img:first-child {
+        top: 5px;
+        left: 0px;
+    }
+        
+    </style>
+
+<ion-view title="User Selection">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+
+    <ion-list>
+        <!--div class="row"-->
+            <!--div class="col"-->
+                <a    ng-repeat="user in userSelection"
+                        class="item item-avatar"
+                        ng-click="setSelectedUser($index)"
+                >
+                    <img src="{{user.avatar}}">
+                    <h2>{{user.username}}</h2>
+                    <p>
+                        HighScore: {{user.highscore}}<br>
+                        TimeToAnswer: {{user.timetoanswer}}<br>
+                        CorrectAnswers: {{user.correctanswers}}<br>
+                        Wins: {{user.wins}}
+                    </p>
+                </a>
+            <!--/div-->
+        <!--/div-->
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
